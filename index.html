@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Telugu WebTech | Modern Digital Solutions for Business</title>
+    <!-- Google Fonts + Font Awesome -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1a1e2b;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* ===== STICKY NAVBAR WITH GLASS BACKGROUND ===== */
+        .navbar-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            transition: all 0.2s ease;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #d25b0d, #4f46e5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            white-space: nowrap;
+        }
+
+        /* Desktop navigation */
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #1e293b;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Right side elements (WhatsApp + Quote button) */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* Modern WhatsApp button - Clean & Attractive */
+        .whatsapp-contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 8px rgba(37, 211, 102, 0.25);
+            border: none;
+        }
+
+        .whatsapp-contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(37, 211, 102, 0.35);
+            background: linear-gradient(135deg, #20b85a 0%, #0e6e5e 100%);
+        }
+
+        .whatsapp-icon i {
+            font-size: 1.2rem;
+        }
+
+        /* HAMBURGER MENU (hidden on desktop) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 2.5px;
+            background-color: #1e293b;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile menu overlay styles */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 75%;
+            max-width: 340px;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: 8px 0 30px rgba(0, 0, 0, 0.12);
+            z-index: 1050;
+            padding: 100px 32px 40px;
+            transition: left 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-menu a {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #0f172a;
+            text-decoration: none;
+            padding: 12px 0;
+            border-bottom: 1px solid #eef2ff;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .mobile-menu a i {
+            width: 28px;
+            color: var(--primary);
+        }
+
+        .mobile-menu a:hover {
+            color: var(--primary);
+            padding-left: 8px;
+        }
+
+        .mobile-actions {
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .mobile-wa {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            justify-content: center;
+            border-radius: 60px;
+            padding: 14px;
+            text-align: center;
+            color: white !important;
+            border: none;
+        }
+
+        .mobile-quote {
+            background: var(--primary);
+            justify-content: center;
+            border-radius: 60px;
+            padding: 14px;
+            text-align: center;
+            color: white !important;
+        }
+
+        /* overlay when menu open */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(2px);
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.2s;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* responsive breakpoints */
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-actions .whatsapp-contact-btn span:not(.whatsapp-icon) {
+                display: none;
+            }
+
+            .nav-actions .whatsapp-contact-btn {
+                padding: 8px 12px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .btn-outline {
+                padding: 8px 18px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .nav-actions .btn-outline {
+                display: none;
+            }
+            
+            .logo {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* rest of your existing styles (kept intact) */
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --secondary: #0f172a;
+            --accent: #0f172a;
+            --gray-light: #f8fafc;
+            --gray-border: #e2e8f0;
+            --card-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.02);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(79, 70, 229, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px -8px rgba(79, 70, 229, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--primary);
+            color: var(--primary);
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        section {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            font-size: 2.6rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #475569;
+            max-width: 680px;
+            margin: 0 auto 56px auto;
+            font-size: 1.2rem;
+        }
+
+        .hero {
+            padding: 40px 0 80px 0;
+        }
+
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .hero-badge {
+            background: #eef2ff;
+            color: var(--primary);
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.7rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #334155;
+            margin-bottom: 32px;
+            max-width: 90%;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            margin-top: 48px;
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats div span {
+            font-weight: 800;
+            font-size: 1.6rem;
+            display: block;
+        }
+
+        .hero-image {
+            flex: 0.8;
+            min-width: 260px;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 48px;
+            height: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 28px;
+            padding: 32px 24px;
+            transition: 0.25s ease;
+            border: 1px solid var(--gray-border);
+            box-shadow: var(--card-shadow);
+        }
+
+        .service-card i {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .mgmt-list {
+            margin-top: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .mgmt-list span {
+            background: #f1f5f9;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 24px;
+            border-radius: 28px;
+            background: #fefefe;
+            border: 1px solid #eef2ff;
+        }
+
+        .feature-item i {
+            font-size: 2rem;
+            background: #eef2ff;
+            padding: 14px;
+            border-radius: 60px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .step {
+            background: white;
+            border-radius: 32px;
+            padding: 28px 24px;
+            flex: 1 1 200px;
+            text-align: center;
+            border: 1px solid var(--gray-border);
+        }
+
+        .step-number {
+            background: var(--primary);
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 60px;
+            color: white;
+            font-weight: 800;
+            font-size: 1.4rem;
+            margin: 0 auto 20px auto;
+        }
+
+        .portfolio-chips {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .chip {
+            background: #f1f5f9;
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .stats-wrapper {
+            background: var(--secondary);
+            color: white;
+            border-radius: 48px;
+            padding: 50px 30px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 32px;
+        }
+
+        .stat-item h3 {
+            font-size: 2.6rem;
+            font-weight: 800;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .testimonial-card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 32px;
+            border: 1px solid var(--gray-border);
+            box-shadow: var(--card-shadow);
+        }
+
+        .testimonial-card i {
+            color: var(--primary);
+            font-size: 1.8rem;
+            opacity: 0.5;
+            margin-bottom: 16px;
+        }
+
+        .cta-section {
+            background: linear-gradient(120deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 48px;
+            color: white;
+            text-align: center;
+            padding: 64px 48px;
+        }
+
+        footer {
+            background: #0b1120;
+            color: #cbd5e1;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 48px;
+        }
+
+        .footer-col p,
+        .footer-col a {
+            color: #94a3b8;
+            text-decoration: none;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #1e293b;
+            padding-top: 30px;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content h1 { font-size: 3rem; }
+            .section-title { font-size: 2.2rem; }
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid { flex-direction: column; text-align: center; }
+            .hero-content { text-align: center; }
+            .hero-content p { max-width: 100%; margin-left: auto; margin-right: auto; }
+            .btn-group { justify-content: center; }
+            .hero-stats { justify-content: center; }
+            .hero-image { order: -1; margin-bottom: 20px; }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 24px; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .section-title { font-size: 1.8rem; }
+            .cta-section { padding: 40px 24px; }
+            .cta-section h2 { font-size: 1.6rem; }
+        }
+    
+/* =========================
+   SCROLL TO TOP
+========================= */
+
+#scrollTopBtn{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  z-index:999;
+
+  width:52px;
+  height:52px;
+
+  border:none;
+  outline:none;
+
+  background:linear-gradient(135deg,#3b48e0,#6c7aff);
+  color:white;
+
+  border-radius:50%;
+  cursor:pointer;
+
+  font-size:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  box-shadow:0 10px 25px rgba(59,72,224,0.35);
+
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(20px);
+
+  transition:all 0.3s ease;
+}
+
+#scrollTopBtn.show{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+#scrollTopBtn:hover{
+  transform:translateY(-4px) scale(1.05);
+  box-shadow:0 14px 30px rgba(59,72,224,0.45);
+}
+
+@media(max-width:768px){
+  #scrollTopBtn{
+    width:46px;
+    height:46px;
+    bottom:20px;
+    right:20px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+    <!-- Sticky Navbar with Hamburger -->
+    <div class="navbar-wrapper">
+        <div class="container">
+            <nav>
+                <a class="nav-link" href="index.html">
+                    <div class="logo">TWT Solutions<span style="color:#d2650c;">.</span></div>
+                </a>
+
+                <!-- Desktop Links - ALL WITH ID LINKS FOR SMOOTH SCROLL -->
+                <div class="nav-links">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#youtube-section" class="nav-link">Youtube</a>
+                    <a href="#portfolio" class="nav-link">Portfolio</a>
+                    <a href="#pricing" class="nav-link">Pricing</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+
+                <!-- Right side actions -->
+                <div class="nav-actions">
+                    <a href="https://wa.me/918978279621" target="_blank" class="whatsapp-contact-btn">
+                        <span class="whatsapp-icon"><i class="fab fa-whatsapp"></i></span>
+                        <span>8978279621</span>
+                    </a>
+                    <a href="#contact" class="btn-outline" style="padding: 8px 22px;">Get Quote</a>
+                    <!-- Hamburger Icon -->
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Panel -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home" class="mobile-nav-link"><i class="fas fa-home"></i> Home</a>
+        <a href="#services" class="mobile-nav-link"><i class="fas fa-cogs"></i> Services</a>
+        <a href="#youtube-section" class="mobile-nav-link"><i class="fab fa-youtube"></i> Youtube</a>
+        <a href="#portfolio" class="mobile-nav-link"><i class="fas fa-briefcase"></i> Portfolio</a>
+        <a href="#pricing" class="mobile-nav-link"><i class="fas fa-tag"></i> Pricing</a>
+        <a href="#contact" class="mobile-nav-link"><i class="fas fa-envelope"></i> Contact</a>
+        <div class="mobile-actions">
+            <a href="https://wa.me/918978279621" target="_blank" class="mobile-wa"><i class="fab fa-whatsapp"></i> WhatsApp: 8978279621</a>
+            <a href="#contact" class="mobile-quote mobile-nav-link"><i class="fas fa-paper-plane"></i> Get Quote</a>
+        </div>
+    </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Hero Section with ID -->
+    <section id="home" class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge"><i class="fas fa-bolt"></i> Future-ready solutions</div>
+                <h1>Your Business, <span style="color:#4f46e5;">Powered by Technology</span></h1>
+                <p>We design and develop modern websites, web applications, mobile apps, desktop software, and business
+                    management systems that help companies grow faster, work smarter, and build a strong digital
+                    presence.</p>
+                <div class="btn-group">
+                    <a href="pricing.html" class="btn-primary"><i class="fas fa-rocket"></i> Start Your Project</a>
+                    <a href="#contact" class="btn-outline"><i class="fas fa-headset"></i> Get Free Consultation</a>
+                </div>
+                <div class="hero-stats">
+                    <div><span>50+</span> Projects</div>
+                    <div><span>30+</span> Happy Clients</div>
+                    <div><span>100%</span> Modern Stack</div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src='./assets/banner.png' alt="hero visual" style="max-width:100%; border-radius:48px;" onerror="this.src='https://placehold.co/500x450/eef2ff/4f46e5?text=Modern+Development'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Small Intro Section -->
+    <section style="padding-top: 0;">
+        <div class="container">
+            <div style="background: #f8fafc; border-radius: 48px; padding: 48px 40px; text-align: center;">
+                <h2 style="font-size: 2rem; margin-bottom: 20px;">Complete Digital Solutions for Businesses</h2>
+                <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto; color: #2d3a4b;">We help startups,
+                    businesses, educational institutions, hospitals, shops, and organizations build professional digital
+                    solutions tailored to their needs. From modern websites to powerful management software, we create
+                    scalable and user-friendly applications with modern technologies.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">What We Build</h2>
+            <p class="section-sub">Professional web and software solutions designed for modern businesses.</p>
+            <div class="services-grid">
+                <div class="service-card"><i class="fas fa-laptop-code"></i><h3>Modern Business Websites</h3><p>Responsive, fast, attractive, and SEO-friendly websites built for brands, businesses.</p></div>
+                <div class="service-card"><i class="fas fa-globe"></i><h3>Web Applications</h3><p>Custom web apps with advanced dashboards, real-time functionality.</p></div>
+                <div class="service-card"><i class="fas fa-users"></i><h3>CRM Systems</h3><p>Manage leads, clients, sales, communication efficiently.</p></div>
+                <div class="service-card"><i class="fas fa-cogs"></i><h3>CMS Platforms</h3><p>Content Management Systems that make managing website content simple.</p></div>
+                <div class="service-card"><i class="fas fa-mobile-alt"></i><h3>Mobile Applications</h3><p>Modern Android and iOS apps with smooth UI/UX.</p></div>
+                <div class="service-card"><i class="fas fa-desktop"></i><h3>Desktop Applications</h3><p>High-performance desktop software for business operations.</p></div>
+                <div class="service-card"><i class="fas fa-chart-line"></i><h3>Management Systems</h3><div class="mgmt-list"><span>Inventory</span><span>School Management</span><span>Hospital Mgmt</span><span>Employee</span><span>Billing</span><span>ERP</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section style="background: #fbfdff;">
+        <div class="container">
+            <h2 class="section-title">Why Businesses Choose Us</h2>
+            <div class="features-grid">
+                <div class="feature-item"><i class="fas fa-palette"></i><h3>Modern Design</h3><p>Visually attractive & responsive.</p></div>
+                <div class="feature-item"><i class="fas fa-cube"></i><h3>Custom Solutions</h3><p>Tailored to your needs.</p></div>
+                <div class="feature-item"><i class="fas fa-chart-simple"></i><h3>Scalable</h3><p>Built for future growth.</p></div>
+                <div class="feature-item"><i class="fas fa-tachometer-alt"></i><h3>Fast Performance</h3><p>Optimized loading speed.</p></div>
+                <div class="feature-item"><i class="fas fa-sync-alt"></i><h3>End-to-End</h3><p>From planning to deployment.</p></div>
+                <div class="feature-item"><i class="fas fa-life-ring"></i><h3>Technical Support</h3><p>Reliable maintenance.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Our Development Process</h2>
+            <div class="process-steps">
+                <div class="step"><div class="step-number">1</div><h3>Analysis</h3><p>Understand goals</p></div>
+                <div class="step"><div class="step-number">2</div><h3>Design</h3><p>UI/UX & architecture</p></div>
+                <div class="step"><div class="step-number">3</div><h3>Development</h3><p>Secure & scalable</p></div>
+                <div class="step"><div class="step-number">4</div><h3>Testing</h3><p>Performance check</p></div>
+                <div class="step"><div class="step-number">5</div><h3>Deploy</h3><p>Launch smoothly</p></div>
+                <div class="step"><div class="step-number">6</div><h3>Support</h3><p>24/7 assistance</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio / Delivered Projects -->
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="section-title">What We Delivered</h2>
+            <p class="section-sub">Some of the digital solutions and systems we build for businesses and organizations.</p>
+            <div class="portfolio-chips">
+                <span class="chip">Business Websites</span><span class="chip">E-Commerce Platforms</span><span class="chip">School Management</span>
+                <span class="chip">Hospital Management</span><span class="chip">Inventory Software</span><span class="chip">Admin Dashboards</span>
+                <span class="chip">CRM Platforms</span><span class="chip">Portfolio Websites</span><span class="chip">Restaurant Websites</span>
+                <span class="chip">Booking Systems</span>
+            </div>
+            <div style="margin-top: 40px; display: flex; justify-content: center;">
+                <a href="youtube_channel.html" class="btn-outline"><i class="fas fa-folder-open"></i> View full portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section (Placeholder) -->
+    <section id="pricing">
+        <div class="container">
+            <div class="stats-wrapper" style="background: linear-gradient(135deg, #0f172a, #1e293b);">
+                <h2 style="font-size: 2rem; margin-bottom: 20px;">Flexible Pricing Plans</h2>
+                <p style="margin-bottom: 32px;">Get custom quotes based on your project needs. Contact us for a tailored package.</p>
+                <a href="pricing.html" class="btn-primary" style="background: white; color: #0f172a;">Request Pricing →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section>
+        <div class="container">
+            <div class="stats-wrapper">
+                <h2>Trusted by Businesses</h2>
+                <div class="stats-grid" style="margin-top:32px;">
+                    <div class="stat-item"><h3>50+</h3><p>Projects</p></div><div class="stat-item"><h3>30+</h3><p>Clients</p></div><div class="stat-item"><h3>100%</h3><p>Responsive</p></div><div class="stat-item"><h3>24/7</h3><p>Support</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Happy Customers</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"The website exceeded our expectations. Professional design and smooth functionality."</p><h4 style="margin-top:20px;">— Rohan Mehta</h4><span style="color:#475569;">Founder, DigiStore</span></div>
+                <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"They developed a complete management system for our business. Very satisfied with the support and quality."</p><h4 style="margin-top:20px;">— Priya Sharma</h4><span style="color:#475569;">Operations Director</span></div>
+                <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"Modern UI, fast performance, and excellent communication throughout the project."</p><h4 style="margin-top:20px;">— Anil Kumar</h4><span style="color:#475569;">CTO, EdTech startup</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Section -->
+    <section id="youtube-section">
+        <div class="container">
+            <div style="background: linear-gradient(120deg, #fef2e8, #ffe6d5); border-radius: 48px; padding: 48px; text-align: center;">
+                <i class="fab fa-youtube" style="font-size: 3rem; color: #ff0000; margin-bottom: 20px;"></i>
+                <h2 style="font-size: 2rem; margin-bottom: 16px;">Learn on YouTube</h2>
+                <p style="max-width: 600px; margin: 0 auto 24px;">Subscribe to our channel for coding tutorials, tech insights, and digital growth strategies.</p>
+                <a href="https://www.youtube.com/@teluguwebtechtutorials" target="_blank" class="btn-primary" style="background: #ff0000; box-shadow: none;">Visit YouTube Channel →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="cta-section">
+                <h2 style="font-size: 2.5rem; margin-bottom: 16px;">Ready to Make Your Business Digital?</h2>
+                <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 32px auto;">Build your next website, application, or business software with modern technologies and professional development solutions.</p>
+                <div class="btn-group" style="justify-content: center;">
+                    <a href="pricing.html" class="btn-primary" style="background: white; color: #0f172a;"><i class="fab fa-whatsapp"></i> Start Your Project</a>
+                    <a href="tel:+918978279621" class="btn-outline" style="border-color: white; color: white;"><i class="fas fa-phone-alt"></i> 8978279621</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col ">
+                    <h3 style="color: white; margin-bottom: 16px;">Telugu WebTech</h3>
+                    <p>We build modern websites, business software, mobile apps, desktop applications, and scalable digital solutions for startups and businesses.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 style="color: white;">Quick Links</h4>
+                    <ul style="list-style: none; margin-top: 12px;">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 style="color: white;">Services</h4>
+                    <ul style="list-style: none; margin-top: 12px;">
+                        <li><a href="#services">Web Development</a></li>
+                        <li><a href="#services">Mobile Apps</a></li>
+                        <li><a href="#services">CRM Development</a></li>
+                        <li><a href="#services">CMS Solutions</a></li>
+                        <li><a href="#services">Management Systems</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 style="color: white;">Contact Info</h4>
+                    <p><i class="fas fa-phone-alt"></i> +91 8978279621</p>
+                    <p><i class="fas fa-envelope"></i> hello@TeluguWebTech.dev</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Andhra Pradesh, India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Telugu WebTech Innovations. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Hamburger + Sticky Navbar + SMOOTH SCROLL JS -->
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const overlay = document.getElementById("menuOverlay");
+
+        function openMenu() {
+            mobileMenu.classList.add("active");
+            overlay.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove("active");
+            overlay.classList.remove("active");
+            document.body.style.overflow = "";
+        }
+
+        hamburger.addEventListener("click", (e) => {
+            e.stopPropagation();
+            if (mobileMenu.classList.contains("active")) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        overlay.addEventListener("click", closeMenu);
+        
+        // SMOOTH SCROLL FUNCTIONALITY FOR ALL NAV LINKS (Desktop + Mobile)
+        function smoothScrollToElement(elementId) {
+            const targetElement = document.querySelector(elementId);
+            if (targetElement) {
+                const navbarHeight = document.querySelector('.navbar-wrapper').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 10;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                return true;
+            }
+            return false;
+        }
+
+        // Handle all navigation links (desktop)
+        document.querySelectorAll('.nav-link, .btn-outline[href^="#"], .btn-primary[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    if (smoothScrollToElement(href)) {
+                        // Update URL hash without jumping
+                        history.pushState(null, null, href);
+                    }
+                }
+            });
+        });
+
+        // Handle mobile nav links
+        document.querySelectorAll('.mobile-nav-link, .mobile-quote').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    closeMenu(); // Close mobile menu first
+                    setTimeout(() => {
+                        if (smoothScrollToElement(href)) {
+                            history.pushState(null, null, href);
+                        }
+                    }, 100);
+                }
+            });
+        });
+
+        // If page loads with a hash, scroll to that section
+        if (window.location.hash) {
+            setTimeout(() => {
+                smoothScrollToElement(window.location.hash);
+            }, 100);
+        }
+    </script>
+
+<!-- Scroll To Top Button -->
+<button id="scrollTopBtn" title="Go to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+
+<script>
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+  window.addEventListener("scroll", () => {
+    if(window.scrollY > 300){
+      scrollTopBtn.classList.add("show");
+    } else {
+      scrollTopBtn.classList.remove("show");
+    }
+  });
+
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+</script>
+
+</body>
+
+</html>

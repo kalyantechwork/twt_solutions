@@ -1,0 +1,110 @@
+
+
+<a href="https://wa.me/918978279621" target="_blank" class="whatsapp-contact-btn">
+                    <span class="whatsapp-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </span>
+                    <span>8978279621</span>
+                </a>
+
+<!-- Navigation -->
+<div class="container">
+  <nav class="navbar">
+    
+    <!-- Logo -->
+    <div class="logo">
+      <i class="fas fa-code"></i>
+      TWT Solutions<span style="color:#3b48e0;">.</span>
+    </div>
+
+    <!-- Hamburger -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="nav-links" id="navLinks">
+      <a href="#">
+        <i class="fas fa-house"></i>
+        Home
+      </a>
+
+      <a href="#services">
+        <i class="fas fa-layer-group"></i>
+        Services
+      </a>
+
+      <a href="#portfolio">
+        <i class="fas fa-briefcase"></i>
+        Portfolio
+      </a>
+
+      <a href="#portfolio">
+        <i class="fab fa-youtube"></i>
+        YouTube
+      </a>
+
+      <a href="#contact">
+        <i class="fas fa-envelope"></i>
+        Contact
+      </a>
+
+      <!-- Mobile Buttons -->
+      <div class="mobile-buttons">
+        
+        <!-- WhatsApp -->
+        <a href="https://wa.me/918978279621" target="_blank" class="whatsapp-btn">
+          <i class="fab fa-whatsapp"></i>
+          WhatsApp
+        </a>
+
+        <!-- Quote -->
+        <a href="#contact" class="btn-outline mobile-quote">
+          <i class="fas fa-paper-plane"></i>
+          Get Quote
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Desktop Right Side -->
+    <div class="desktop-actions">
+
+      <!-- WhatsApp Button -->
+      <a href="https://wa.me/918978279621" target="_blank" class="whatsapp-contact-btn">
+        <span class="whatsapp-icon">
+          <i class="fab fa-whatsapp"></i>
+        </span>
+        <span>WhatsApp</span>
+      </a>
+
+      <!-- Quote -->
+      <a href="#contact" class="btn-outline">
+        <i class="fas fa-paper-plane"></i>
+        Get Quote
+      </a>
+
+    </div>
+
+  </nav>
+</div>
+
+
+
+<script>
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
+
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+
+  // Close mobile menu on click
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+    });
+  });
+</script>
